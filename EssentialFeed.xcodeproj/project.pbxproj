@@ -16,6 +16,7 @@
 		DB6ED8572C350DEB003E94DC /* EssentialFeed.h in Headers */ = {isa = PBXBuildFile; fileRef = DB6ED8322C350C33003E94DC /* EssentialFeed.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DBD6A4432C440706002E9C3A /* RemoteFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD6A4422C440706002E9C3A /* RemoteFeedLoader.swift */; };
 		DBD6A4452C516AE8002E9C3A /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD6A4442C516AE8002E9C3A /* HTTPClient.swift */; };
+		DBD6A4472C516BA9002E9C3A /* FeedItemsMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD6A4462C516BA9002E9C3A /* FeedItemsMapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +40,7 @@
 		DB6ED8322C350C33003E94DC /* EssentialFeed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EssentialFeed.h; sourceTree = "<group>"; };
 		DBD6A4422C440706002E9C3A /* RemoteFeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedLoader.swift; sourceTree = "<group>"; };
 		DBD6A4442C516AE8002E9C3A /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		DBD6A4462C516BA9002E9C3A /* FeedItemsMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemsMapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 			children = (
 				DBD6A4422C440706002E9C3A /* RemoteFeedLoader.swift */,
 				DBD6A4442C516AE8002E9C3A /* HTTPClient.swift */,
+				DBD6A4462C516BA9002E9C3A /* FeedItemsMapper.swift */,
 			);
 			path = "Feed API";
 			sourceTree = "<group>";
@@ -228,6 +231,7 @@
 				DBD6A4432C440706002E9C3A /* RemoteFeedLoader.swift in Sources */,
 				DBD6A4452C516AE8002E9C3A /* HTTPClient.swift in Sources */,
 				DB6ED82B2C306C91003E94DC /* FeedLoader.swift in Sources */,
+				DBD6A4472C516BA9002E9C3A /* FeedItemsMapper.swift in Sources */,
 				DB6ED8292C306C09003E94DC /* FeedItem.swift in Sources */,
 				DB6ED8132C306BB9003E94DC /* EssentialFeed.docc in Sources */,
 			);
