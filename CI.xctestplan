@@ -1,19 +1,26 @@
 {
   "configurations" : [
     {
-      "id" : "DAC51F88-44E9-4CCE-8D7A-5A9EF8E21F63",
+      "id" : "9C4D9783-14CC-438C-9C82-C37642B81E07",
       "name" : "Test Scheme Action",
       "options" : {
-        "testExecutionOrdering" : "random"
+
       }
     }
   ],
   "defaultOptions" : {
-    "testExecutionOrdering" : "random"
+
   },
   "testTargets" : [
     {
-      "enabled" : false,
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:EssentialFeed.xcodeproj",
+        "identifier" : "DB8F464E2C7B3F4C006672CC",
+        "name" : "EssentialFeedEndToEndTests"
+      }
+    },
+    {
       "parallelizable" : true,
       "target" : {
         "containerPath" : "container:EssentialFeed.xcodeproj",
