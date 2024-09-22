@@ -129,10 +129,6 @@ final class URLSessionHTTPClientTests: XCTestCase {
         }
     }
     
-    private func anyURL() -> URL {
-        URL(string: "https://any-url.com")!
-    }
-    
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> HTTPClient {
         let sut = URLSessionHTTPClient()
         trackForMemoryLeak(sut, file: file, line: line)
@@ -141,10 +137,6 @@ final class URLSessionHTTPClientTests: XCTestCase {
     
     private func anyData() -> Data {
         return Data("any data".utf8)
-    }
-
-    private func anyNSError() -> NSError {
-        return NSError(domain: "any error", code: 0)
     }
 
     private func anyHTTPURLResponse() -> HTTPURLResponse {
