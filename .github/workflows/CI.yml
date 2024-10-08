@@ -12,10 +12,10 @@ jobs:
     runs-on: macos-latest
 
     steps:
-    - uses: actions/checkout@v4  # Checkout the repository
+    - uses: actions/checkout@v4
 
     - name: Set Xcode Version
-      uses: maxim-lobanov/setup-xcode@v2
+      uses: maxim-lobanov/setup-xcode
       with:
         xcode-version: '16.0'  # Specify Xcode 16.0
 
