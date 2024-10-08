@@ -12,10 +12,10 @@ jobs:
     runs-on: macos-latest
 
     steps:
-    - uses: actions/checkout@v4  # Specify the correct version of the checkout action
-
+    - uses: actions/checkout@v4
+    
     - name: Select Xcode
-      run: sudo xcode-select -switch /Applications/Xcode.app
+      run: sudo xcode-select -switch /Applications/Xcode_16.0.app/Contents/Developer
 
     - name: Build and test
       run: |
