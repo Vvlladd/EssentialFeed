@@ -21,6 +21,13 @@
       }
     },
     {
+      "target" : {
+        "containerPath" : "container:EssentialFeed.xcodeproj",
+        "identifier" : "DB8700792CB525CA004185F4",
+        "name" : "EssentialFeedCacheIntergrationTests"
+      }
+    },
+    {
       "parallelizable" : true,
       "target" : {
         "containerPath" : "container:EssentialFeed.xcodeproj",
