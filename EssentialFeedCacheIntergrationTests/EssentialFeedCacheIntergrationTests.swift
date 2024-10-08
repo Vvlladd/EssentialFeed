@@ -25,22 +25,8 @@ final class EssentialFeedCacheIntegrationTests: XCTestCase {
 
     func test_load_deliversNoItemsOnEmptyCache() {
         let sut = makeSUT()
-
-        let exp = expectation(description: "Wait for load completion")
-        sut.load { result in
-            switch result {
-            case let .success(imageFeed):
-                XCTAssertEqual(imageFeed, [], "Expected empty feed")
-
-            case let .failure(error):
-                XCTFail("Expected successful feed result, got \(error) instead")
-            @unknown default:
-                XCTFail()
-            }
-
-            exp.fulfill()
-        }
-        wait(for: [exp], timeout: 1.0)
+        
+        expect(sut, toLoad: [])
     }
     
     
@@ -56,36 +42,9 @@ final class EssentialFeedCacheIntegrationTests: XCTestCase {
         }
         wait(for: [saveExp], timeout: 1.0)
 
-        let loadExp = expectation(description: "Wait for load completion")
-        sutToPerformLoad.load { loadResult in
-            switch loadResult {
-            case let .success(imageFeed):
-                XCTAssertEqual(imageFeed, feed)
-
-            case let .failure(error):
-                XCTFail("Expected successful feed result, got \(error) instead")
-            @unknown default:
-                XCTFail()
-            }
-
-            loadExp.fulfill()
-        }
-        wait(for: [loadExp], timeout: 1.0)
+        expect(sutToPerformLoad, toLoad: feed)
     }
     
-    
-    private func setupEmptyStoreState() {
-        deleteStoreArtifacts()
-    }
-
-    private func undoStoreSideEffects() {
-        deleteStoreArtifacts()
-    }
-
-    private func deleteStoreArtifacts() {
-        try? FileManager.default.removeItem(at: testSpecificStoreURL())
-    }
-
     // MARK: Helpers
 
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> LocalFeedLoader {
@@ -104,6 +63,38 @@ final class EssentialFeedCacheIntegrationTests: XCTestCase {
 
     private func cachesDirectory() -> URL {
         return FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
+    }
+    
+    private func expect(_ sut: LocalFeedLoader, toLoad expectedFeed: [FeedImage], file: StaticString = #file, line: UInt = #line) {
+        let exp = expectation(description: "Wait for load completion")
+        sut.load { result in
+            switch result {
+            case let .success(loadedFeed):
+                XCTAssertEqual(loadedFeed, expectedFeed, file: file, line: line)
+
+            case let .failure(error):
+                XCTFail("Expected successful feed result, got \(error) instead", file: file, line: line)
+                
+                
+            @unknown default:
+                XCTFail()
+            }
+            
+            exp.fulfill()
+        }
+        wait(for: [exp], timeout: 1.0)
+    }
+    
+    private func setupEmptyStoreState() {
+        deleteStoreArtifacts()
+    }
+
+    private func undoStoreSideEffects() {
+        deleteStoreArtifacts()
+    }
+
+    private func deleteStoreArtifacts() {
+        try? FileManager.default.removeItem(at: testSpecificStoreURL())
     }
 
 }
