@@ -10,7 +10,6 @@ import EssentialFeed
 
 final class EssentialFeedCacheIntegrationTests: XCTestCase {
     
-    
     override func setUp() {
         super.setUp()
 
