@@ -12,10 +12,15 @@ jobs:
     runs-on: macos-latest
 
     steps:
-    - uses: actions/checkout@v4  # Specify the correct version of the checkout action
+    - uses: actions/checkout@v4  # Checkout the repository
+
+    - name: Set Xcode Version
+      uses: maxim-lobanov/setup-xcode@v2
+      with:
+        xcode-version: '16.0'  # Specify Xcode 16.0
 
     - name: Select Xcode
-      run: sudo xcode-select -switch /Applications/Xcode.app
+      run: sudo xcode-select -switch /Applications/Xcode_16.0.app/Contents/Developer  # Ensure Xcode 16.0 is selected
 
     - name: Build and test
       run: |
