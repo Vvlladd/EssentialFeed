@@ -91,14 +91,16 @@ final class CacheFeedUseCaseTests: XCTestCase {
         let store = FeedStoreSpy()
         var sut: LocalFeedLoader? = LocalFeedLoader(store: store, currentDate: Date.init)
         
-        var receivedResults = [Error?]()
-        sut?.save(uniqueImageFeed().models) { receivedResults.append($0) }
+        var receivedResults: Error?
+        sut?.save(uniqueImageFeed().models) { result in
+            if case let Result.failure(error) = result { receivedResults = error }
+        }
         
         store.completeDeletionSuccessfully()
         sut = nil
         store.completeInsertion(with: anyNSError())
         
-        XCTAssertTrue(receivedResults.isEmpty)
+        XCTAssertNil(receivedResults)
     }
 
     
@@ -108,8 +110,8 @@ final class CacheFeedUseCaseTests: XCTestCase {
             let exp = expectation(description: "Wait for save completion")
 
             var receivedError: Error?
-            sut.save(uniqueImageFeed().models) { error in
-                receivedError = error
+        sut.save(uniqueImageFeed().models) { result in
+                    if case let Result.failure(error) = result { receivedError = error }
                 exp.fulfill()
             }
 
